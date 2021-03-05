@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 
-import CharacterProfile from "./CharacterProfile";
+import CharacterCard from "./profile/CharacterCard";
 import { isEmptyObject, notNullArray } from "../../utils/Validator";
 
 // eslint-disable-next-line react/prefer-stateless-function
@@ -20,7 +20,8 @@ class CharactersProfilesList extends Component {
         {!isEmptyObject(data) &&
           notNullArray(data.results) &&
           data.results.map((characterData) => (
-            <CharacterProfile
+            <CharacterCard
+              id={characterData.id}
               name={characterData.name}
               status={characterData.status}
               species={characterData.species}

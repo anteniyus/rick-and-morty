@@ -9,7 +9,7 @@ import {
 
 import RickAndMortyStore from "./dataStore/DataStore";
 import Home from "./screens/home/Home";
-import CharacterProfileMain from "./screens/character/profile/CharacterProfileMain";
+import CharacterProfile from "./screens/character/profile/CharacterProfile";
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
             exact
             path="/character/:id"
             render={(routerProps) => (
-              <CharacterProfileMain id={routerProps.match.params.id} />
+              <CharacterProfile id={routerProps.match.params.id} />
             )}
           />
 
