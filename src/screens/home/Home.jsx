@@ -1,6 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 
+import Connector from "../../dataStore/Connector";
 import CharactersProfilesList from "../character/CharactersProfilesList";
 
 const useStyles = makeStyles({
@@ -9,14 +11,25 @@ const useStyles = makeStyles({
   },
 });
 
-const Home = () => {
+const Home = (props) => {
   const classes = useStyles();
+
+  const { data, getCharacters } = props;
 
   return (
     <div className={classes.root}>
-      <CharactersProfilesList />
+      <CharactersProfilesList getCharacters={getCharacters} data={data} />
     </div>
   );
 };
 
-export default Home;
+Home.defaultProps = {
+  data: [],
+};
+
+Home.propTypes = {
+  getCharacters: PropTypes.func.isRequired,
+  data: PropTypes.instanceOf(Array),
+};
+
+export default Connector(Home);
