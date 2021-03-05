@@ -9,6 +9,8 @@ import Card from "@material-ui/core/Card";
 import CharacterCardMedia from "./CharacterCardMedia";
 import CharacterCardContent from "./CharacterCardContent";
 
+import styles from "./CharacterProfile.module.css";
+
 const useStyles = makeStyles({
   root: {
     display: "flex",
@@ -27,12 +29,7 @@ export default function CharacterCard(props) {
 
   return (
     <Grid item xs={12} sm={12} md={6} lg={4}>
-      <Link
-        to={linkUrl}
-        style={{
-          textDecoration: "none",
-        }}
-      >
+      <Link to={linkUrl} className={styles.noDecoration}>
         <Card className={classes.root}>
           <Grid item xs={5}>
             <CharacterCardMedia image={image} />
