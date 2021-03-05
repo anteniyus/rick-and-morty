@@ -5,14 +5,16 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
+import CharacterCardMedia from "./profile/CharacterCardMedia";
 
 const useStyles = makeStyles({
   root: {
     display: "flex",
     height: "220px",
     maxWidth: "100%",
+    backgroundColor: "rgb(60, 62, 68)",
+    color: "whitesmoke",
   },
   details: {
     display: "flex",
@@ -25,7 +27,9 @@ const useStyles = makeStyles({
     height: "100%",
   },
   title: {
-    fontSize: 14,
+    fontSize: 16,
+    fontWeight: 500,
+    color: "whitesmoke",
   },
 });
 
@@ -35,17 +39,10 @@ export default function CharacterProfile(props) {
   const { name, status, species, locationName, image } = props;
 
   return (
-    <Grid item xs={12} sm={6} md={6} lg={3}>
+    <Grid item xs={12} sm={6} md={6} lg={4}>
       <Card className={classes.root}>
         <Grid item xs={5}>
-          <CardMedia
-            className={classes.cover}
-            component="img"
-            alt="Contemplative Reptile"
-            height="140"
-            image={image}
-            title="Contemplative Reptile"
-          />
+          <CharacterCardMedia image={image} />
         </Grid>
 
         <Grid item xs={7}>
