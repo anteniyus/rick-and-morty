@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Grid from "@material-ui/core/Grid";
@@ -23,36 +24,84 @@ const useStyles = makeStyles({
   cover: {
     height: "100%",
   },
+  title: {
+    fontSize: 14,
+  },
 });
 
-export default function CharacterProfile() {
+export default function CharacterProfile(props) {
   const classes = useStyles();
 
+  const { name, status, species, locationName, image } = props;
+
   return (
-    <Grid item xs={6} sm={3}>
+    <Grid item xs={12} sm={6} md={6} lg={3}>
       <Card className={classes.root}>
-        <div className={classes.details}>
+        <Grid item xs={5}>
           <CardMedia
             className={classes.cover}
             component="img"
             alt="Contemplative Reptile"
             height="140"
-            image="https://material-ui.com/static/images/cards/contemplative-reptile.jpg"
+            image={image}
             title="Contemplative Reptile"
           />
-        </div>
-        <div className={classes.details}>
+        </Grid>
+
+        <Grid item xs={7}>
           <CardContent className={classes.content}>
             <Typography gutterBottom variant="h5" component="h2">
-              Lizard
+              {name}
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica
+
+            <Typography
+              className={classes.title}
+              color="textSecondary"
+              gutterBottom
+            >
+              {`${status} - ${species}`}
+            </Typography>
+
+            <Typography
+              className={classes.title}
+              color="textSecondary"
+              gutterBottom
+            >
+              Last known location:
+            </Typography>
+            <Typography
+              className={classes.title}
+              color="textSecondary"
+              gutterBottom
+            >
+              {locationName}
+            </Typography>
+
+            <Typography
+              className={classes.title}
+              color="textSecondary"
+              gutterBottom
+            >
+              First seen in:
+            </Typography>
+            <Typography
+              className={classes.title}
+              color="textSecondary"
+              gutterBottom
+            >
+              Pilot
             </Typography>
           </CardContent>
-        </div>
+        </Grid>
       </Card>
     </Grid>
   );
 }
+
+CharacterProfile.propTypes = {
+  name: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired,
+  species: PropTypes.string.isRequired,
+  locationName: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+};

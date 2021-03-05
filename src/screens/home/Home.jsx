@@ -29,7 +29,7 @@ Home.defaultProps = {
 
 Home.propTypes = {
   getCharacters: PropTypes.func.isRequired,
-  data: PropTypes.instanceOf(Array),
+  data: PropTypes.instanceOf(Object),
 };
 
 export default Connector(Home);
