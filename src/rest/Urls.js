@@ -3,7 +3,7 @@ const hostname = "rickandmortyapi.com";
 const subdirectory = "api";
 const characterPath = "character";
 
-const GetCharactersListUrl = () =>
+const GetCharactersUrl = () =>
   `${protocol}://${hostname}/${subdirectory}/${characterPath}`;
 
-export default GetCharactersListUrl;
+export default GetCharactersUrl;
