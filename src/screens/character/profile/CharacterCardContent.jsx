@@ -10,20 +10,17 @@ import Brightness1Icon from "@material-ui/icons/Brightness1";
 import CustomIcon from "../../../components/icon/CustomIcon";
 
 const useStyles = makeStyles({
-  details: {
-    display: "flex",
-    flexDirection: "column",
-  },
   content: {
     flex: "1 0 auto",
-  },
-  cover: {
-    height: "100%",
   },
   title: {
     fontSize: 16,
     fontWeight: 500,
     color: "rgb(158, 158, 158)",
+  },
+  text: {
+    fontSize: 14,
+    fontWeight: 500,
   },
 });
 
@@ -63,37 +60,27 @@ const CharacterCardContent = (props) => {
   }
 
   return (
-    <CardContent className={classes.content}>
+    <CardContent>
       <Box mb={3}>
         <Typography variant="h5" component="h2">
           {name}
         </Typography>
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          gutterBottom
-        >
+        <Typography gutterBottom>
           {handlingStatusIcon(status)}
           {` ${status} - ${species}`}
         </Typography>
       </Box>
 
       <Box mb={3}>
-        <Typography className={classes.title} color="textSecondary">
-          Last known location:
+        <Typography className={classes.title}>Last known location:</Typography>
+        <Typography className={classes.text} gutterBottom>
+          {locationName}
         </Typography>
-        <Typography gutterBottom>{locationName}</Typography>
       </Box>
 
       <Box mb={3}>
-        <Typography className={classes.title} color="textSecondary">
-          First seen in:
-        </Typography>
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          gutterBottom
-        >
+        <Typography className={classes.title}>First seen in:</Typography>
+        <Typography className={classes.text} gutterBottom>
           Pilot
         </Typography>
       </Box>

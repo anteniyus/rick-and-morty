@@ -23,7 +23,7 @@ export default function CharacterProfile(props) {
   const { name, status, species, locationName, image } = props;
 
   return (
-    <Grid item xs={12} sm={6} md={6} lg={4}>
+    <Grid item xs={12} sm={12} md={6} lg={4}>
       <Card className={classes.root}>
         <Grid item xs={5}>
           <CharacterCardMedia image={image} />
