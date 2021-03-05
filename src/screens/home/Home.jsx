@@ -36,7 +36,9 @@ const Home = (props) => {
             exact
             path="/character/:id"
             render={(routerProps) => (
-              <CharacterProfile id={routerProps.match.params.id} />
+              <CharacterProfile
+                id={parseInt(routerProps.match.params.id, 10)}
+              />
             )}
           />
 
