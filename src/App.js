@@ -9,14 +9,24 @@ import {
 
 import RickAndMortyStore from "./dataStore/DataStore";
 import Home from "./screens/home/Home";
+import CharacterProfileMain from "./screens/character/profile/CharacterProfileMain";
 
 function App() {
   return (
     <Provider store={RickAndMortyStore}>
       <Router>
         <Switch>
-          <Route path="/character" component={Home} />
-          <Redirect from="/" to="/character" exact />
+          <Route path="/character" component={Home} exact />
+
+          <Route
+            exact
+            path="/character/:id"
+            render={(routerProps) => (
+              <CharacterProfileMain id={routerProps.match.params.id} />
+            )}
+          />
+
+          <Redirect to="/character" />
         </Switch>
       </Router>
     </Provider>
