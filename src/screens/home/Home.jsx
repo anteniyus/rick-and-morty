@@ -1,16 +1,48 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
+
 import Box from "@material-ui/core/Box";
 
 import Connector from "../../dataStore/Connector";
 import CharactersProfilesList from "../character/CharactersProfilesList";
+
+import CharacterProfile from "../character/profile/CharacterProfile";
 
 const Home = (props) => {
   const { data, getCharacters } = props;
 
   return (
     <Box p={5}>
-      <CharactersProfilesList getCharacters={getCharacters} data={data} />
+      <Router>
+        <Switch>
+          <Route
+            path="/character"
+            render={() => (
+              <CharactersProfilesList
+                getCharacters={getCharacters}
+                data={data}
+              />
+            )}
+            exact
+          />
+
+          <Route
+            exact
+            path="/character/:id"
+            render={(routerProps) => (
+              <CharacterProfile id={routerProps.match.params.id} />
+            )}
+          />
+
+          <Redirect to="/character" />
+        </Switch>
+      </Router>
     </Box>
   );
 };
