@@ -5,6 +5,8 @@ import Typography from "@material-ui/core/Typography";
 import CardContent from "@material-ui/core/CardContent";
 import { makeStyles } from "@material-ui/core/styles";
 
+import Brightness1Icon from "@material-ui/icons/Brightness1";
+
 const useStyles = makeStyles({
   root: {
     display: "flex",
@@ -35,6 +37,14 @@ const CharacterCardContent = (props) => {
 
   const { name, status, species, locationName } = props;
 
+  function handlingStatusIcon(someStatus) {
+    return someStatus === "Alive" ? (
+      <Brightness1Icon style={{ color: "green", fontSize: "10px" }} />
+    ) : (
+      <Brightness1Icon style={{ color: "red", fontSize: "10px" }} />
+    );
+  }
+
   return (
     <CardContent className={classes.content}>
       <Typography gutterBottom variant="h5" component="h2">
@@ -42,7 +52,8 @@ const CharacterCardContent = (props) => {
       </Typography>
 
       <Typography className={classes.title} color="textSecondary" gutterBottom>
-        {`${status} - ${species}`}
+        {handlingStatusIcon(status)}
+        {` ${status} - ${species}`}
       </Typography>
 
       <Typography className={classes.title} color="textSecondary" gutterBottom>
