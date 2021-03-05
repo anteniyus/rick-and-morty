@@ -4,17 +4,12 @@ import PropTypes from "prop-types";
 import Typography from "@material-ui/core/Typography";
 import CardContent from "@material-ui/core/CardContent";
 import { makeStyles } from "@material-ui/core/styles";
+import Box from "@material-ui/core/Box";
 
 import Brightness1Icon from "@material-ui/icons/Brightness1";
+import CustomIcon from "../../../components/icon/CustomIcon";
 
 const useStyles = makeStyles({
-  root: {
-    display: "flex",
-    height: "220px",
-    maxWidth: "100%",
-    backgroundColor: "rgb(60, 62, 68)",
-    color: "whitesmoke",
-  },
   details: {
     display: "flex",
     flexDirection: "column",
@@ -28,7 +23,7 @@ const useStyles = makeStyles({
   title: {
     fontSize: 16,
     fontWeight: 500,
-    color: "whitesmoke",
+    color: "rgb(158, 158, 158)",
   },
 });
 
@@ -38,37 +33,70 @@ const CharacterCardContent = (props) => {
   const { name, status, species, locationName } = props;
 
   function handlingStatusIcon(someStatus) {
-    return someStatus === "Alive" ? (
-      <Brightness1Icon style={{ color: "green", fontSize: "10px" }} />
-    ) : (
-      <Brightness1Icon style={{ color: "red", fontSize: "10px" }} />
-    );
+    let resultIcon;
+    switch (someStatus.toLowerCase()) {
+      case "alive":
+        resultIcon = (
+          <CustomIcon IconComponent={<Brightness1Icon />} color="green" />
+        );
+        break;
+
+      case "dead":
+        resultIcon = (
+          <CustomIcon IconComponent={<Brightness1Icon />} color="red" />
+        );
+        break;
+
+      case "unknown":
+        resultIcon = (
+          <CustomIcon IconComponent={<Brightness1Icon />} color="gray" />
+        );
+        break;
+
+      default:
+        resultIcon = (
+          <CustomIcon IconComponent={<Brightness1Icon />} color="orange" />
+        );
+        break;
+    }
+    return resultIcon;
   }
 
   return (
     <CardContent className={classes.content}>
-      <Typography gutterBottom variant="h5" component="h2">
-        {name}
-      </Typography>
+      <Box mb={3}>
+        <Typography variant="h5" component="h2">
+          {name}
+        </Typography>
+        <Typography
+          className={classes.title}
+          color="textSecondary"
+          gutterBottom
+        >
+          {handlingStatusIcon(status)}
+          {` ${status} - ${species}`}
+        </Typography>
+      </Box>
 
-      <Typography className={classes.title} color="textSecondary" gutterBottom>
-        {handlingStatusIcon(status)}
-        {` ${status} - ${species}`}
-      </Typography>
+      <Box mb={3}>
+        <Typography className={classes.title} color="textSecondary">
+          Last known location:
+        </Typography>
+        <Typography gutterBottom>{locationName}</Typography>
+      </Box>
 
-      <Typography className={classes.title} color="textSecondary" gutterBottom>
-        Last known location:
-      </Typography>
-      <Typography className={classes.title} color="textSecondary" gutterBottom>
-        {locationName}
-      </Typography>
-
-      <Typography className={classes.title} color="textSecondary" gutterBottom>
-        First seen in:
-      </Typography>
-      <Typography className={classes.title} color="textSecondary" gutterBottom>
-        Pilot
-      </Typography>
+      <Box mb={3}>
+        <Typography className={classes.title} color="textSecondary">
+          First seen in:
+        </Typography>
+        <Typography
+          className={classes.title}
+          color="textSecondary"
+          gutterBottom
+        >
+          Pilot
+        </Typography>
+      </Box>
     </CardContent>
   );
 };
