@@ -6,9 +6,7 @@ import Typography from "@material-ui/core/Typography";
 
 import RestApi from "../../../rest/RestApi";
 
-// eslint-disable-next-line react/prefer-stateless-function
 export default class CharacterEposide extends Component {
-  // eslint-disable-next-line no-useless-constructor
   constructor(props) {
     super(props);
 
@@ -39,31 +37,15 @@ export default class CharacterEposide extends Component {
   render() {
     const { episodesName } = this.state;
     return (
-      <>
-        <CardContent>
-          <Typography
-            style={{
-              fontSize: 16,
-              fontWeight: 500,
-              color: "rgb(158, 158, 158)",
-            }}
-          >
-            Episodes:
-          </Typography>
+      <CardContent>
+        <Typography className="title">Episodes:</Typography>
 
-          {episodesName.map((episodeName) => (
-            <Typography
-              style={{
-                fontSize: 14,
-                fontWeight: 500,
-              }}
-              key={episodeName}
-            >
-              {episodeName}
-            </Typography>
-          ))}
-        </CardContent>
-      </>
+        {episodesName.map((episodeName) => (
+          <Typography className="text" key={episodeName}>
+            {episodeName}
+          </Typography>
+        ))}
+      </CardContent>
     );
   }
 }
