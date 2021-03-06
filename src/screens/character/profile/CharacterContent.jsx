@@ -8,7 +8,7 @@ import Box from "@material-ui/core/Box";
 import Brightness1Icon from "@material-ui/icons/Brightness1";
 import CustomIcon from "../../../components/icon/CustomIcon";
 
-const CharacterCardContent = (props) => {
+const CharacterContent = (props) => {
   const { name, status, species, type, gender } = props;
 
   function handlingStatusIcon(someStatus) {
@@ -66,11 +66,11 @@ const CharacterCardContent = (props) => {
   );
 };
 
-CharacterCardContent.defaultProps = {
+CharacterContent.defaultProps = {
   type: "unknown",
 };
 
-CharacterCardContent.propTypes = {
+CharacterContent.propTypes = {
   name: PropTypes.string.isRequired,
   status: PropTypes.string.isRequired,
   species: PropTypes.string.isRequired,
@@ -78,4 +78,4 @@ CharacterCardContent.propTypes = {
   gender: PropTypes.string.isRequired,
 };
 
-export default CharacterCardContent;
+export default CharacterContent;

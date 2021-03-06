@@ -10,7 +10,7 @@ const useStyles = makeStyles({
   },
 });
 
-const CharacterCardMedia = (props) => {
+const CharacterMedia = (props) => {
   const classes = useStyles();
 
   const { image } = props;
@@ -27,8 +27,8 @@ const CharacterCardMedia = (props) => {
   );
 };
 
-CharacterCardMedia.propTypes = {
+CharacterMedia.propTypes = {
   image: PropTypes.string.isRequired,
 };
 
-export default CharacterCardMedia;
+export default CharacterMedia;

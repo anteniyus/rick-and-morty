@@ -6,8 +6,8 @@ import Grid from "@material-ui/core/Grid";
 
 import RestApi from "../../../rest/RestApi";
 
-import CharacterCardMedia from "./CharacterCardMedia";
-import CharacterCardContent from "./CharacterCardContent";
+import CharacterMedia from "./CharacterMedia";
+import CharacterContent from "./CharacterContent";
 
 import { isEmptyObject } from "../../../utils/Validator";
 import CharacterLocationInfo from "./CharacterLocationInfo";
@@ -50,11 +50,11 @@ class CharacterProfile extends Component {
               }}
             >
               <Grid item xs={5}>
-                <CharacterCardMedia image={data.image} />
+                <CharacterMedia image={data.image} />
               </Grid>
 
               <Grid item xs={7}>
-                <CharacterCardContent
+                <CharacterContent
                   name={data.name}
                   status={data.status}
                   species={data.species}
