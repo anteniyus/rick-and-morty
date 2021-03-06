@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import { Card } from "@material-ui/core";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
 
 import RestApi from "../../../rest/RestApi";
 import Connector from "../../../dataStore/Connector";
@@ -25,31 +23,86 @@ class CharacterLocationInfo extends Component {
   render() {
     const { data } = this.props;
     return (
-      <Box p={5}>
+      <>
         {!isEmptyObject(data) && (
-          <Card>
-            <CardContent>
-              <Typography
-                style={{
-                  fontSize: 16,
-                  fontWeight: 500,
-                  color: "rgb(158, 158, 158)",
-                }}
-              >
-                Last known location:
-              </Typography>
-              <Typography
-                style={{
-                  fontSize: 14,
-                  fontWeight: 500,
-                }}
-              >
-                {data.name}
-              </Typography>
-            </CardContent>
-          </Card>
+          <CardContent>
+            <Typography
+              style={{
+                fontSize: 16,
+                fontWeight: 500,
+                color: "rgb(158, 158, 158)",
+              }}
+            >
+              Location Name:
+            </Typography>
+            <Typography
+              style={{
+                fontSize: 14,
+                fontWeight: 500,
+              }}
+              gutterBottom
+            >
+              {data.name}
+            </Typography>
+
+            <Typography
+              style={{
+                fontSize: 16,
+                fontWeight: 500,
+                color: "rgb(158, 158, 158)",
+              }}
+            >
+              Location Type:
+            </Typography>
+            <Typography
+              style={{
+                fontSize: 14,
+                fontWeight: 500,
+              }}
+              gutterBottom
+            >
+              {data.type}
+            </Typography>
+
+            <Typography
+              style={{
+                fontSize: 16,
+                fontWeight: 500,
+                color: "rgb(158, 158, 158)",
+              }}
+            >
+              Location Dimension:
+            </Typography>
+            <Typography
+              style={{
+                fontSize: 14,
+                fontWeight: 500,
+              }}
+              gutterBottom
+            >
+              {data.dimension}
+            </Typography>
+
+            <Typography
+              style={{
+                fontSize: 16,
+                fontWeight: 500,
+                color: "rgb(158, 158, 158)",
+              }}
+            >
+              Amount of Residents:
+            </Typography>
+            <Typography
+              style={{
+                fontSize: 14,
+                fontWeight: 500,
+              }}
+            >
+              {data.residents.length}
+            </Typography>
+          </CardContent>
         )}
-      </Box>
+      </>
     );
   }
 }
