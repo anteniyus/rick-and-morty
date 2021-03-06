@@ -32,7 +32,10 @@
     ],
     "testPathIgnorePatterns": [
       "<rootDir>/__tests__/setup/"
-    ]
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(css|less)$": "<rootDir>/config/CSSStub.js"
+    }
   },
   "eslintConfig": {
     "extends": [
