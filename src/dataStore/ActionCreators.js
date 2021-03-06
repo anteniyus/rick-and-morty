@@ -13,6 +13,8 @@ export const getCharacters = (page, params) => ({
     }),
     () => ({
       data: [],
+      total: 0,
+      params,
     })
   ),
 });

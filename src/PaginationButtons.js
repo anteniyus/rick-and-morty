@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Pagination from "@material-ui/lab/Pagination";
+import { Box } from "@material-ui/core";
 
 /*eslint-disable */
 export class PaginationButtons extends Component {
@@ -8,12 +9,16 @@ export class PaginationButtons extends Component {
     const pageCount = this.props.pageCount;
     const navigate = this.props.navigate;
     return (
-      <Pagination
-        count={pageCount}
-        color="secondary"
-        page={current}
-        onChange={(event, val) => navigate(val)}
-      />
+      <Box mt={5} display="flex" justifyContent="center">
+        <Pagination
+          count={pageCount}
+          color="secondary"
+          page={current}
+          onChange={(event, val) => navigate(val)}
+          showFirstButton
+          showLastButton
+        />
+      </Box>
     );
   }
 }
