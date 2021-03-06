@@ -65,7 +65,7 @@ const CharacterCardContent = (props) => {
         <Typography variant="h5" component="h2">
           {name}
         </Typography>
-        <Typography gutterBottom>
+        <Typography>
           {handlingStatusIcon(status)}
           {` ${status} - ${species}`}
         </Typography>
@@ -73,16 +73,12 @@ const CharacterCardContent = (props) => {
 
       <Box mb={3}>
         <Typography className={classes.title}>Last known location:</Typography>
-        <Typography className={classes.text} gutterBottom>
-          {locationName}
-        </Typography>
+        <Typography className={classes.text}>{locationName}</Typography>
       </Box>
 
-      <Box mb={3}>
+      <Box>
         <Typography className={classes.title}>First seen in:</Typography>
-        <Typography className={classes.text} gutterBottom>
-          Pilot
-        </Typography>
+        <Typography className={classes.text}>Pilot</Typography>
       </Box>
     </CardContent>
   );

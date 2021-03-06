@@ -3,7 +3,7 @@ import RestApi from "../rest/RestApi";
 
 const api = new RestApi();
 
-const getCharacters = (params) => ({
+export const getCharacters = (params) => ({
   type: ActionTypes.GET_CHARACTERS,
   payload: api.GetCharacters(params).then(
     (response) => ({
@@ -15,4 +15,14 @@ const getCharacters = (params) => ({
   ),
 });
 
-export default getCharacters;
+export const getSingleLocation = (id, params) => ({
+  type: ActionTypes.GET_SINGLE_LOCATION,
+  payload: api.GetSingleLocation(id, params).then(
+    (response) => ({
+      data: response.data,
+    }),
+    () => ({
+      data: [],
+    })
+  ),
+});

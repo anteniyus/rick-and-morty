@@ -7,6 +7,12 @@ const RepositoryReducer = (storeData, action) => {
         ...storeData,
         data: action.payload.data,
       };
+
+    case ActionTypes.GET_SINGLE_LOCATION:
+      return {
+        ...storeData,
+        data: action.payload.data,
+      };
     default:
       return storeData || {};
   }
