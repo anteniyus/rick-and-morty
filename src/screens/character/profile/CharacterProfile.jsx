@@ -9,7 +9,7 @@ import CharacterMedia from "./CharacterMedia";
 import CharacterContent from "./CharacterContent";
 
 import { isEmptyObject } from "../../../utils/Validator";
-import CharacterLocationInfo from "./CharacterLocationInfo";
+import CharacterLocationOriginInfo from "./CharacterLocationOriginInfo";
 import CharacterEposide from "./CharacterEposide";
 
 class CharacterProfile extends Component {
@@ -54,9 +54,16 @@ class CharacterProfile extends Component {
                   gender={data.gender}
                 />
 
-                <CharacterLocationInfo
+                <CharacterLocationOriginInfo
                   id={this.getLocationIdFromUrl(data.location.url)}
+                  title="Location"
                   name={data.location.name}
+                />
+
+                <CharacterLocationOriginInfo
+                  id={this.getLocationIdFromUrl(data.origin.url)}
+                  title="Origin"
+                  name={data.origin.name}
                 />
 
                 <CharacterEposide episodes={data.episode} />

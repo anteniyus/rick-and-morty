@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import RestApi from "../../../rest/RestApi";
 import { isEmptyObject, notNullArray } from "../../../utils/Validator";
 
-class CharacterLocationInfo extends Component {
+class CharacterLocationOriginInfo extends Component {
   constructor(props) {
     super(props);
 
@@ -28,24 +28,24 @@ class CharacterLocationInfo extends Component {
 
   render() {
     const { data } = this.state;
-    const { name } = this.props;
+    const { name, title } = this.props;
 
     return (
       <>
         <CardContent>
-          <Typography className="title">Location Name:</Typography>
+          <Typography className="title">{`${title} Name:`}</Typography>
           <Typography className="text" gutterBottom>
             {name || data.name}
           </Typography>
 
           {!isEmptyObject(data) && (
             <>
-              <Typography className="title">Location Type:</Typography>
+              <Typography className="title">{`${title} Type:`}</Typography>
               <Typography className="text" gutterBottom>
                 {data.type}
               </Typography>
 
-              <Typography className="title">Location Dimension:</Typography>
+              <Typography className="title">{`${title} Dimension:`}</Typography>
               <Typography className="text" gutterBottom>
                 {data.dimension}
               </Typography>
@@ -62,13 +62,14 @@ class CharacterLocationInfo extends Component {
   }
 }
 
-CharacterLocationInfo.defaultProps = {
+CharacterLocationOriginInfo.defaultProps = {
   name: "",
 };
 
-CharacterLocationInfo.propTypes = {
+CharacterLocationOriginInfo.propTypes = {
   id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
   name: PropTypes.string,
 };
 
-export default CharacterLocationInfo;
+export default CharacterLocationOriginInfo;
