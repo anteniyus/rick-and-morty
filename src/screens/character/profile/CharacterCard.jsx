@@ -11,7 +11,7 @@ import CustomCard from "../../../components/card/CustomCard";
 
 export default function CharacterCard(props) {
   const { data } = props;
-  const linkUrl = `/character/${data.id}`;
+  const linkUrl = `/character/profile/${data.id}`;
 
   return (
     <Grid item xs={12} sm={12} md={6} lg={4}>

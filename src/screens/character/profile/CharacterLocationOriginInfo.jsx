@@ -21,9 +21,10 @@ class CharacterLocationOriginInfo extends Component {
   componentDidMount() {
     const { id } = this.props;
 
-    this.api
-      .GetSingleLocation(id)
-      .then((response) => this.setState({ data: response.data }));
+    if (id)
+      this.api
+        .GetSingleLocation(id)
+        .then((response) => this.setState({ data: response.data }));
   }
 
   render() {

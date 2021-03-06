@@ -6,6 +6,14 @@ const RepositoryReducer = (storeData, action) => {
       return {
         ...storeData,
         data: action.payload.data,
+        total: action.payload.total,
+        params: action.payload.params,
+      };
+
+    case ActionTypes.DATA_SET_PAGESIZE:
+      return {
+        ...storeData,
+        pageSize: action.payload,
       };
 
     case ActionTypes.GET_SINGLE_LOCATION:

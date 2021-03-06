@@ -3,11 +3,13 @@ import RestApi from "../rest/RestApi";
 
 const api = new RestApi();
 
-export const getCharacters = (params) => ({
+export const getCharacters = (page, params) => ({
   type: ActionTypes.GET_CHARACTERS,
-  payload: api.GetCharacters(params).then(
+  payload: api.GetCharacters(page).then(
     (response) => ({
       data: response.data,
+      total: response.data.info.count,
+      params,
     }),
     () => ({
       data: [],
@@ -25,4 +27,9 @@ export const getSingleLocation = (id, params) => ({
       data: [],
     })
   ),
+});
+
+export const setPageSize = (newSize) => ({
+  type: ActionTypes.DATA_SET_PAGESIZE,
+  payload: newSize,
 });

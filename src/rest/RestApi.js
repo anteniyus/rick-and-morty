@@ -7,8 +7,8 @@ import {
 } from "./Urls";
 
 class RestApi {
-  GetCharacters = async (username, params) =>
-    this.SendRequest("get", GetCharactersUrl(), params);
+  GetCharacters = async (page, params) =>
+    this.SendRequest("get", GetCharactersUrl(page), params);
 
   GetSingleCharacter = async (id, params) =>
     this.SendRequest("get", GetSingleCharactersUrl(id), params);
