@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
 
 import RestApi from "../../../rest/RestApi";
@@ -41,16 +40,9 @@ class CharacterProfile extends Component {
       <>
         {!isEmptyObject(data) && (
           <Grid item lg={12}>
-            <Card
-              style={{
-                display: "flex",
-                maxWidth: "100%",
-                backgroundColor: "rgb(60, 62, 68)",
-                color: "whitesmoke",
-              }}
-            >
+            <div className="cardRoot">
               <Grid item xs={5}>
-                <CharacterMedia image={data.image} />
+                <CharacterMedia image={data.image} className="autoHeight" />
               </Grid>
 
               <Grid item xs={7}>
@@ -69,7 +61,7 @@ class CharacterProfile extends Component {
 
                 <CharacterEposide episodes={data.episode} />
               </Grid>
-            </Card>
+            </div>
           </Grid>
         )}
       </>

@@ -2,22 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import CardMedia from "@material-ui/core/CardMedia";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles({
-  cover: {
-    height: "auto",
-  },
-});
 
 const CharacterMedia = (props) => {
-  const classes = useStyles();
-
-  const { image } = props;
+  const { image, className } = props;
 
   return (
     <CardMedia
-      className={classes.cover}
+      className={className}
       component="img"
       alt="Contemplative Reptile"
       height="140"
@@ -27,8 +18,13 @@ const CharacterMedia = (props) => {
   );
 };
 
+CharacterMedia.defaultProps = {
+  className: "responsiveImage",
+};
+
 CharacterMedia.propTypes = {
   image: PropTypes.string.isRequired,
+  className: PropTypes.string,
 };
 
 export default CharacterMedia;

@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 import Grid from "@material-ui/core/Grid";
-import Card from "@material-ui/core/Card";
 import CharacterMedia from "./CharacterMedia";
 import CharacterContent from "./CharacterContent";
 
 import styles from "./CharacterCard.module.css";
+import CustomCard from "../../../components/card/CustomCard";
 
 export default function CharacterCard(props) {
   const { data } = props;
@@ -16,7 +16,7 @@ export default function CharacterCard(props) {
   return (
     <Grid item xs={12} sm={12} md={6} lg={4}>
       <Link to={linkUrl} className={styles.noDecoration}>
-        <Card className={styles.root}>
+        <CustomCard>
           <Grid item xs={5}>
             <CharacterMedia image={data.image} />
           </Grid>
@@ -30,7 +30,7 @@ export default function CharacterCard(props) {
               gender={data.gender}
             />
           </Grid>
-        </Card>
+        </CustomCard>
       </Link>
     </Grid>
   );

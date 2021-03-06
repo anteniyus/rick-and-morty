@@ -12,3 +12,19 @@
   font-size: 14px;
   font-weight: 500;
 }
+
+.responsiveImage {
+  width: 100%;
+  height: 100%;
+}
+
+.cardRoot {
+  display: flex;
+  max-width: 100%;
+  background-color: rgb(60, 62, 68);
+  color: whitesmoke;
+}
+
+.autoHeight {
+  height: auto;
+}
