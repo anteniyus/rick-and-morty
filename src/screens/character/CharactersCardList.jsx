@@ -5,8 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import CharacterCard from "./profile/CharacterCard";
 import { isEmptyObject, notNullArray } from "../../utils/Validator";
 
-// eslint-disable-next-line react/prefer-stateless-function
-class CharactersProfilesList extends Component {
+class CharactersCardList extends Component {
   componentDidMount() {
     const { getCharacters } = this.props;
     getCharacters();
@@ -20,28 +19,20 @@ class CharactersProfilesList extends Component {
         {!isEmptyObject(data) &&
           notNullArray(data.results) &&
           data.results.map((characterData) => (
-            <CharacterCard
-              id={characterData.id}
-              name={characterData.name}
-              status={characterData.status}
-              species={characterData.species}
-              locationName={characterData.location.name}
-              image={characterData.image}
-              key={characterData.id}
-            />
+            <CharacterCard data={characterData} key={characterData.id} />
           ))}
       </Grid>
     );
   }
 }
 
-CharactersProfilesList.defaultProps = {
+CharactersCardList.defaultProps = {
   data: [],
 };
 
-CharactersProfilesList.propTypes = {
+CharactersCardList.propTypes = {
   getCharacters: PropTypes.func.isRequired,
   data: PropTypes.instanceOf(Object),
 };
 
-export default CharactersProfilesList;
+export default CharactersCardList;

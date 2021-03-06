@@ -3,31 +3,13 @@ import PropTypes from "prop-types";
 
 import Typography from "@material-ui/core/Typography";
 import CardContent from "@material-ui/core/CardContent";
-import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 
 import Brightness1Icon from "@material-ui/icons/Brightness1";
 import CustomIcon from "../../../components/icon/CustomIcon";
 
-const useStyles = makeStyles({
-  content: {
-    flex: "1 0 auto",
-  },
-  title: {
-    fontSize: 16,
-    fontWeight: 500,
-    color: "rgb(158, 158, 158)",
-  },
-  text: {
-    fontSize: 14,
-    fontWeight: 500,
-  },
-});
-
 const CharacterCardContent = (props) => {
-  const classes = useStyles();
-
-  const { name, status, species, locationName } = props;
+  const { name, status, species, type, gender } = props;
 
   function handlingStatusIcon(someStatus) {
     let resultIcon;
@@ -72,23 +54,28 @@ const CharacterCardContent = (props) => {
       </Box>
 
       <Box mb={3}>
-        <Typography className={classes.title}>Last known location:</Typography>
-        <Typography className={classes.text}>{locationName}</Typography>
+        <Typography className="title">Type:</Typography>
+        <Typography className="text">{type}</Typography>
       </Box>
 
       <Box>
-        <Typography className={classes.title}>First seen in:</Typography>
-        <Typography className={classes.text}>Pilot</Typography>
+        <Typography className="title">Gender:</Typography>
+        <Typography className="text">{gender}</Typography>
       </Box>
     </CardContent>
   );
+};
+
+CharacterCardContent.defaultProps = {
+  type: "unknown",
 };
 
 CharacterCardContent.propTypes = {
   name: PropTypes.string.isRequired,
   status: PropTypes.string.isRequired,
   species: PropTypes.string.isRequired,
-  locationName: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  gender: PropTypes.string.isRequired,
 };
 
 export default CharacterCardContent;

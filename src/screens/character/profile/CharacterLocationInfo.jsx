@@ -13,15 +13,21 @@ class CharacterLocationInfo extends Component {
     super(props);
 
     this.api = new RestApi();
+
+    this.state = {
+      data: {},
+    };
   }
 
   componentDidMount() {
-    const { id, getSingleLocation } = this.props;
-    getSingleLocation(id);
+    const { id } = this.props;
+    this.api
+      .GetSingleLocation(id)
+      .then((response) => this.setState({ data: response.data }));
   }
 
   render() {
-    const { data } = this.props;
+    const { data } = this.state;
     return (
       <>
         {!isEmptyObject(data) && (
@@ -109,8 +115,6 @@ class CharacterLocationInfo extends Component {
 
 CharacterLocationInfo.propTypes = {
   id: PropTypes.number.isRequired,
-  getSingleLocation: PropTypes.func.isRequired,
-  data: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default Connector(CharacterLocationInfo);

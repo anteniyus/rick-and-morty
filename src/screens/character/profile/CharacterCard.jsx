@@ -24,23 +24,24 @@ const useStyles = makeStyles({
 export default function CharacterCard(props) {
   const classes = useStyles();
 
-  const { name, status, species, locationName, image, id } = props;
-  const linkUrl = `/character/${id}`;
+  const { data } = props;
+  const linkUrl = `/character/${data.id}`;
 
   return (
     <Grid item xs={12} sm={12} md={6} lg={4}>
       <Link to={linkUrl} className={styles.noDecoration}>
         <Card className={classes.root}>
           <Grid item xs={5}>
-            <CharacterCardMedia image={image} />
+            <CharacterCardMedia image={data.image} />
           </Grid>
 
           <Grid item xs={7}>
             <CharacterCardContent
-              name={name}
-              status={status}
-              species={species}
-              locationName={locationName}
+              name={data.name}
+              status={data.status}
+              species={data.species}
+              type={data.type}
+              gender={data.gender}
             />
           </Grid>
         </Card>
@@ -49,11 +50,10 @@ export default function CharacterCard(props) {
   );
 }
 
+CharacterCard.defaultProps = {
+  data: [],
+};
+
 CharacterCard.propTypes = {
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  status: PropTypes.string.isRequired,
-  species: PropTypes.string.isRequired,
-  locationName: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  data: PropTypes.instanceOf(Object),
 };

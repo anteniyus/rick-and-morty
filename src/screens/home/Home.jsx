@@ -10,7 +10,7 @@ import {
 import Box from "@material-ui/core/Box";
 
 import Connector from "../../dataStore/Connector";
-import CharactersProfilesList from "../character/CharactersProfilesList";
+import CharactersCardList from "../character/CharactersCardList";
 
 import CharacterProfile from "../character/profile/CharacterProfile";
 
@@ -24,10 +24,7 @@ const Home = (props) => {
           <Route
             path="/character"
             render={() => (
-              <CharactersProfilesList
-                getCharacters={getCharacters}
-                data={data}
-              />
+              <CharactersCardList getCharacters={getCharacters} data={data} />
             )}
             exact
           />

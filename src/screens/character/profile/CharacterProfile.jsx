@@ -11,6 +11,7 @@ import CharacterCardContent from "./CharacterCardContent";
 
 import { isEmptyObject } from "../../../utils/Validator";
 import CharacterLocationInfo from "./CharacterLocationInfo";
+import CharacterEposide from "./CharacterEposide";
 
 class CharacterProfile extends Component {
   constructor(props) {
@@ -56,12 +57,15 @@ class CharacterProfile extends Component {
                   name={data.name}
                   status={data.status}
                   species={data.species}
-                  locationName={data.location.name}
+                  type={data.type}
+                  gender={data.gender}
                 />
 
                 <CharacterLocationInfo
                   id={this.getLocationIdFromUrl(data.location.url)}
                 />
+
+                <CharacterEposide episodes={data.episode} />
               </Grid>
             </Card>
           </Grid>
