@@ -6,7 +6,7 @@ import CharacterProfile from "../../../src/screens/character/profile/CharacterPr
 import CharacterMedia from "../../../src/screens/character/profile/CharacterMedia";
 import CharacterContent from "../../../src/screens/character/profile/CharacterContent";
 import CharacterLocationOriginInfo from "../../../src/screens/character/profile/CharacterLocationOriginInfo";
-import CharacterEposide from "../../../src/screens/character/profile/CharacterEposide";
+import CharacterEpisode from "../../../src/screens/character/profile/CharacterEpisode";
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -117,7 +117,7 @@ describe("<CharacterProfile/>", () => {
       const characterLocationOriginInfoCount = wrapper.find(
         CharacterLocationOriginInfo
       ).length;
-      const charaEpisodeCount = wrapper.find(CharacterEposide).length;
+      const charaEpisodeCount = wrapper.find(CharacterEpisode).length;
 
       expect(charaMediaCount).toBe(1);
       expect(charaContentCount).toBe(1);

@@ -10,7 +10,7 @@ import CharacterContent from "./CharacterContent";
 
 import { isEmptyObject } from "../../../utils/Validator";
 import CharacterLocationOriginInfo from "./CharacterLocationOriginInfo";
-import CharacterEposide from "./CharacterEposide";
+import CharacterEpisode from "./CharacterEpisode";
 
 class CharacterProfile extends Component {
   constructor(props) {
@@ -66,7 +66,7 @@ class CharacterProfile extends Component {
                   name={data.origin.name}
                 />
 
-                <CharacterEposide episodes={data.episode} />
+                <CharacterEpisode episodes={data.episode} />
               </Grid>
             </div>
           </Grid>

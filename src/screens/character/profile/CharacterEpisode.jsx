@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 
 import RestApi from "../../../rest/RestApi";
 
-export default class CharacterEposide extends Component {
+export default class CharacterEpisode extends Component {
   constructor(props) {
     super(props);
 
@@ -50,6 +50,6 @@ export default class CharacterEposide extends Component {
   }
 }
 
-CharacterEposide.propTypes = {
+CharacterEpisode.propTypes = {
   episodes: PropTypes.instanceOf(Array).isRequired,
 };
