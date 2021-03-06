@@ -1,6 +1,6 @@
 import ActionTypes from "./Types";
 
-const RepositoryReducer = (storeData, action) => {
+const Reducer = (storeData, action) => {
   switch (action.type) {
     case ActionTypes.GET_CHARACTERS:
       return {
@@ -26,4 +26,4 @@ const RepositoryReducer = (storeData, action) => {
   }
 };
 
-export default RepositoryReducer;
+export default Reducer;

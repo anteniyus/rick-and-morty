@@ -1,10 +1,7 @@
 import { createStore, applyMiddleware } from "redux";
-import RepositoryReducer from "./RepositoryReducer";
+import Reducer from "./Reducer";
 import asyncActions from "./AsyncMiddleware";
 
-const RickAndMortyStore = createStore(
-  RepositoryReducer,
-  applyMiddleware(asyncActions)
-);
+const RickAndMortyStore = createStore(Reducer, applyMiddleware(asyncActions));
 
 export default RickAndMortyStore;
