@@ -31,7 +31,8 @@ class CharacterProfile extends Component {
       .then((response) => this.setState({ data: response.data }));
   }
 
-  getLocationIdFromUrl = (url) => parseInt(url.substr(url.length - 2), 10);
+  getLocationIdFromUrl = (url) =>
+    parseInt(url.substr(url.lastIndexOf("/") + 1), 10);
 
   render() {
     const { data } = this.state;
@@ -63,6 +64,7 @@ class CharacterProfile extends Component {
 
                 <CharacterLocationInfo
                   id={this.getLocationIdFromUrl(data.location.url)}
+                  name={data.location.name}
                 />
 
                 <CharacterEposide episodes={data.episode} />
