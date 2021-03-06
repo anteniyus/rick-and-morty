@@ -55,26 +55,22 @@ const CharacterContent = (props) => {
 
       <Box mb={3}>
         <Typography className="title">Type:</Typography>
-        <Typography className="text">{type}</Typography>
+        <Typography className="text">{type || "unknown"}</Typography>
       </Box>
 
       <Box>
         <Typography className="title">Gender:</Typography>
-        <Typography className="text">{gender}</Typography>
+        <Typography className="text">{gender || "unknown"}</Typography>
       </Box>
     </CardContent>
   );
-};
-
-CharacterContent.defaultProps = {
-  type: "unknown",
 };
 
 CharacterContent.propTypes = {
   name: PropTypes.string.isRequired,
   status: PropTypes.string.isRequired,
   species: PropTypes.string.isRequired,
-  type: PropTypes.string,
+  type: PropTypes.string.isRequired,
   gender: PropTypes.string.isRequired,
 };
 
