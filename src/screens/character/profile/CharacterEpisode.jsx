@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import { CardContent } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
+import Skeleton from "@material-ui/lab/Skeleton";
 
 import RestApi from "../../../rest/RestApi";
 
@@ -14,6 +15,7 @@ export default class CharacterEpisode extends Component {
 
     this.state = {
       episodesName: [],
+      loading: true,
     };
   }
 
@@ -23,7 +25,7 @@ export default class CharacterEpisode extends Component {
       results.forEach((result) => loadedEpisodesName.push(result.data.name))
     );
 
-    this.setState({ episodesName: loadedEpisodesName });
+    this.setState({ episodesName: loadedEpisodesName, loading: false });
   }
 
   loadEpisodesName = () => {
@@ -35,16 +37,20 @@ export default class CharacterEpisode extends Component {
   };
 
   render() {
-    const { episodesName } = this.state;
+    const { episodesName, loading } = this.state;
     return (
       <CardContent>
         <Typography className="title">Episodes:</Typography>
 
-        {episodesName.map((episodeName) => (
-          <Typography className="text" key={episodeName}>
-            {episodeName}
-          </Typography>
-        ))}
+        {loading ? (
+          <Skeleton animation="wave" width="25%" height="100%" />
+        ) : (
+          episodesName.map((episodeName) => (
+            <Typography className="text" key={episodeName}>
+              {episodeName}
+            </Typography>
+          ))
+        )}
       </CardContent>
     );
   }
