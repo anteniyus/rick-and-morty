@@ -3,13 +3,12 @@ import PropTypes from "prop-types";
 
 import Grid from "@material-ui/core/Grid";
 import Skeleton from "@material-ui/lab/Skeleton";
+import Alert from "@material-ui/lab/Alert";
 
 import RestApi from "../../../rest/RestApi";
-
 import CharacterMedia from "./CharacterMedia";
 import CharacterContent from "./CharacterContent";
-
-// import { isEmptyObject } from "../../../utils/Validator";
+import { isEmptyObject } from "../../../utils/Validator";
 import CharacterLocationOriginInfo from "./CharacterLocationOriginInfo";
 import CharacterEpisode from "./CharacterEpisode";
 
@@ -22,6 +21,7 @@ class CharacterProfile extends Component {
     this.state = {
       data: {},
       loading: true,
+      errorMessage: "",
     };
   }
 
@@ -30,6 +30,9 @@ class CharacterProfile extends Component {
     this.api
       .GetSingleCharacter(id)
       .then((response) => this.setState({ data: response.data }))
+      .catch((error) =>
+        this.setState({ data: {}, errorMessage: error.response.data.error })
+      )
       .finally(() => this.setState({ loading: false }));
   }
 
@@ -37,39 +40,43 @@ class CharacterProfile extends Component {
     parseInt(url.substr(url.lastIndexOf("/") + 1), 10);
 
   createUI = (data) => (
-    <div className="cardRoot">
-      <Grid item xs={5}>
-        <CharacterMedia image={data.image} className="autoHeight" />
-      </Grid>
+    <>
+      {!isEmptyObject(data) && (
+        <div className="cardRoot">
+          <Grid item xs={5}>
+            <CharacterMedia image={data.image} className="autoHeight" />
+          </Grid>
 
-      <Grid item xs={7}>
-        <CharacterContent
-          name={data.name}
-          status={data.status}
-          species={data.species}
-          type={data.type}
-          gender={data.gender}
-        />
+          <Grid item xs={7}>
+            <CharacterContent
+              name={data.name}
+              status={data.status}
+              species={data.species}
+              type={data.type}
+              gender={data.gender}
+            />
 
-        <CharacterLocationOriginInfo
-          id={this.getLocationIdFromUrl(data.location.url)}
-          title="Location"
-          name={data.location.name}
-        />
+            <CharacterLocationOriginInfo
+              id={this.getLocationIdFromUrl(data.location.url)}
+              title="Location"
+              name={data.location.name}
+            />
 
-        <CharacterLocationOriginInfo
-          id={this.getLocationIdFromUrl(data.origin.url)}
-          title="Origin"
-          name={data.origin.name}
-        />
+            <CharacterLocationOriginInfo
+              id={this.getLocationIdFromUrl(data.origin.url)}
+              title="Origin"
+              name={data.origin.name}
+            />
 
-        <CharacterEpisode episodes={data.episode} />
-      </Grid>
-    </div>
+            <CharacterEpisode episodes={data.episode} />
+          </Grid>
+        </div>
+      )}
+    </>
   );
 
   render() {
-    const { data, loading } = this.state;
+    const { data, loading, errorMessage } = this.state;
 
     return (
       <>
@@ -79,6 +86,8 @@ class CharacterProfile extends Component {
           ) : (
             this.createUI(data)
           )}
+
+          {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
         </Grid>
       </>
     );
