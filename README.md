@@ -15,7 +15,7 @@ on each character's box to see more details about the specific character.
 
 Also, it is available to change page number from URL:
 
-> [host]/character/**PageNumber**
+> [host]/character/**{PageNumber}**
 
 ## Building
 
