@@ -10,17 +10,12 @@ const Reducer = (storeData, action) => {
         params: action.payload.params,
       };
 
-    case ActionTypes.DATA_SET_PAGESIZE:
-      return {
-        ...storeData,
-        pageSize: action.payload,
-      };
-
     case ActionTypes.GET_SINGLE_LOCATION:
       return {
         ...storeData,
         data: action.payload.data,
       };
+
     default:
       return storeData || {};
   }

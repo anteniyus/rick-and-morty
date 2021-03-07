@@ -30,8 +30,3 @@ export const getSingleLocation = (id, params) => ({
     })
   ),
 });
-
-export const setPageSize = (newSize) => ({
-  type: ActionTypes.DATA_SET_PAGESIZE,
-  payload: newSize,
-});
