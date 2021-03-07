@@ -6,9 +6,9 @@ import CharacterCard from "./profile/CharacterCard";
 import { isEmptyObject, notNullArray } from "../../utils/Validator";
 
 import PaginationConnector from "../../dataStore/PaginationConnector";
-import { PaginationControls } from "../../PaginationControl";
+import PaginationButtons from "../../components/pagination/PaginationButtons";
 
-const Pagination = PaginationConnector(PaginationControls);
+const Pagination = PaginationConnector(PaginationButtons);
 
 // eslint-disable-next-line react/prefer-stateless-function
 class CharactersCardList extends Component {
