@@ -37,7 +37,8 @@ All scripts that are available in create-react-app.
 
 ## Deployment
 
-For deployment, you can use nginx as web server.
+For local deployment (the steps for the server deployment are the same in most cases),
+you can use nginx as web server.
 
 - First create the production build with this command:
 
@@ -71,3 +72,6 @@ server {
 ```
 
 Done. Start the Nginx.
+
+The application is accessible from the following location:
+> localhost:5050
