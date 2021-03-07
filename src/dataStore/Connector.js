@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { getCharacters, getSingleLocation } from "./ActionCreators";
+import getCharacters from "./ActionCreators";
 
 const mapStateToProps = (dataStore) => ({
   ...dataStore,
@@ -7,7 +7,6 @@ const mapStateToProps = (dataStore) => ({
 
 const mapDispatchToProps = {
   getCharacters,
-  getSingleLocation,
 };
 
 const mergeProps = (dataStore, actionCreators, router) => ({
