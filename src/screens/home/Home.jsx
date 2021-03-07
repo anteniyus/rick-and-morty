@@ -33,10 +33,7 @@ const Home = (props) => {
                   match={match}
                   getCharacters={getCharacters}
                 >
-                  <CharactersCardList
-                    getCharacters={getCharacters}
-                    data={data}
-                  />
+                  <CharactersCardList data={data} />
                 </DataGetter>
               );
             }}

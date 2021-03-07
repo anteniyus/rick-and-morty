@@ -1,3 +1,10 @@
 .noDecoration {
   text-decoration: none;
 }
+
+.boxShadow {
+  transition: box-shadow 0.3s;
+}
+.boxShadow:hover {
+  box-shadow: 0 0 11px black;
+}

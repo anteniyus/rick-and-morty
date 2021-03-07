@@ -1,7 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import PropTypes from "prop-types";
 
 const useStyles = makeStyles({
   root: {
@@ -15,13 +17,27 @@ const useStyles = makeStyles({
 const CustomCard = (props) => {
   const classes = useStyles();
 
-  const { children } = props;
+  const { children, className } = props;
 
-  return <Card className={classes.root}>{children}</Card>;
+  const multipleClasses = classNames({
+    [classes.root]: true,
+    [className]: true,
+  });
+
+  /*
+   * Also it is possible to pass [classes.root, className].join(" ") to the following className
+   * instead of using classNames library
+   * */
+  return <Card className={multipleClasses}>{children}</Card>;
+};
+
+CustomCard.defaultProps = {
+  className: "",
 };
 
 CustomCard.propTypes = {
   children: PropTypes.instanceOf(Array).isRequired,
+  className: PropTypes.string,
 };
 
 export default CustomCard;

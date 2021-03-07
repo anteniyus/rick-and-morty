@@ -16,7 +16,7 @@ export default function CharacterCard(props) {
   return (
     <Grid item xs={12} sm={12} md={6} lg={4}>
       <Link to={linkUrl} className={styles.noDecoration}>
-        <CustomCard>
+        <CustomCard className={styles.boxShadow}>
           <Grid item xs={5}>
             <CharacterMedia image={data.image} />
           </Grid>
