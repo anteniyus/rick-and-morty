@@ -10,10 +10,8 @@ const CharacterMedia = (props) => {
     <CardMedia
       className={className}
       component="img"
-      alt="Contemplative Reptile"
       height="140"
       image={image}
-      title="Contemplative Reptile"
     />
   );
 };

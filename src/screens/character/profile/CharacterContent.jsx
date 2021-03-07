@@ -12,33 +12,28 @@ const CharacterContent = (props) => {
   const { name, status, species, type, gender } = props;
 
   function handlingStatusIcon(someStatus) {
-    let resultIcon;
-    switch (someStatus.toLowerCase()) {
+    let resultIconColor;
+    switch (someStatus && someStatus.toLowerCase()) {
       case "alive":
-        resultIcon = (
-          <CustomIcon IconComponent={<Brightness1Icon />} color="green" />
-        );
+        resultIconColor = "green";
         break;
 
       case "dead":
-        resultIcon = (
-          <CustomIcon IconComponent={<Brightness1Icon />} color="red" />
-        );
+        resultIconColor = "red";
         break;
 
       case "unknown":
-        resultIcon = (
-          <CustomIcon IconComponent={<Brightness1Icon />} color="gray" />
-        );
+        resultIconColor = "gray";
         break;
 
       default:
-        resultIcon = (
-          <CustomIcon IconComponent={<Brightness1Icon />} color="orange" />
-        );
+        resultIconColor = "orange";
         break;
     }
-    return resultIcon;
+
+    return (
+      <CustomIcon IconComponent={<Brightness1Icon />} color={resultIconColor} />
+    );
   }
 
   return (
