@@ -8,12 +8,13 @@ const Reducer = (storeData, action) => {
         data: action.payload.data,
         total: action.payload.total,
         params: action.payload.params,
+        isLoading: action.payload.isLoading,
       };
 
-    case ActionTypes.GET_SINGLE_LOCATION:
+    case ActionTypes.SET_LOADING:
       return {
         ...storeData,
-        data: action.payload.data,
+        isLoading: action.payload.isLoading,
       };
 
     default:

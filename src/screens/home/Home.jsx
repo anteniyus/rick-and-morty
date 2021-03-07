@@ -15,7 +15,7 @@ import CharacterProfile from "../character/profile/CharacterProfile";
 import DataGetter from "../../dataStore/DataGetter";
 
 const Home = (props) => {
-  const { data, getCharacters, params } = props;
+  const { data, getCharacters, setLoading, params, isLoading } = props;
 
   return (
     <Box p={5}>
@@ -32,8 +32,9 @@ const Home = (props) => {
                   params={params}
                   match={match}
                   getCharacters={getCharacters}
+                  setLoading={setLoading}
                 >
-                  <CharactersCardList data={data} />
+                  <CharactersCardList data={data} isLoading={isLoading} />
                 </DataGetter>
               );
             }}
@@ -60,12 +61,15 @@ const Home = (props) => {
 Home.defaultProps = {
   data: [],
   params: {},
+  isLoading: false,
 };
 
 Home.propTypes = {
   getCharacters: PropTypes.func.isRequired,
+  setLoading: PropTypes.func.isRequired,
   data: PropTypes.instanceOf(Object),
   params: PropTypes.instanceOf(Object),
+  isLoading: PropTypes.bool,
 };
 
 export default Connector(Home);

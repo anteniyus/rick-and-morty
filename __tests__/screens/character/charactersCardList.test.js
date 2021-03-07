@@ -2,6 +2,8 @@ import React from "react";
 import Enzyme, { shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
+import Skeleton from "@material-ui/lab/Skeleton";
+
 import CharactersCardList from "../../../src/screens/character/CharactersCardList";
 import CharacterCard from "../../../src/screens/character/profile/CharacterCard";
 
@@ -76,14 +78,6 @@ describe("<CharacterLocationOriginInfo />", () => {
     ],
   };
 
-  describe("props", () => {
-    test("check props requirements", () => {
-      const wrapper = shallow(<CharactersCardList getCharacters={() => {}} />);
-
-      expect(wrapper.instance().props.getCharacters).not.toBe(undefined);
-    });
-  });
-
   describe("render()", () => {
     test("render the component with no data", () => {
       const wrapper = shallow(<CharactersCardList getCharacters={() => {}} />);
@@ -101,6 +95,16 @@ describe("<CharacterLocationOriginInfo />", () => {
       const characterCardCount = wrapper.find(CharacterCard).length;
 
       expect(characterCardCount).toBe(data.results.length);
+    });
+
+    test("renders the component loading", () => {
+      const wrapper = shallow(
+        <CharactersCardList getCharacters={() => {}} isLoading />
+      );
+
+      const skeletonCount = wrapper.find(Skeleton).length;
+
+      expect(skeletonCount).toBe(1);
     });
   });
 });

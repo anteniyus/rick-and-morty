@@ -11,15 +11,17 @@ class DataGetter extends Component {
    * in data store that were added after the last request
    * */
   getData = () => {
-    const { params, match, getCharacters } = this.props;
+    const { params, match, getCharacters, setLoading } = this.props;
     const dsData = params;
 
     const rtData = {
       page: match.params.page || 1,
     };
 
-    if (Object.keys(rtData).find((key) => dsData[key] !== rtData[key]))
+    if (Object.keys(rtData).find((key) => dsData[key] !== rtData[key])) {
+      setLoading(true);
       getCharacters(rtData);
+    }
   };
 
   render() {
@@ -37,6 +39,7 @@ DataGetter.propTypes = {
   params: PropTypes.instanceOf(Object),
   match: PropTypes.instanceOf(Object).isRequired,
   getCharacters: PropTypes.func.isRequired,
+  setLoading: PropTypes.func.isRequired,
 };
 
 export default DataGetter;
