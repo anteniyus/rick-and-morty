@@ -3,9 +3,9 @@ import RestApi from "../rest/RestApi";
 
 const api = new RestApi();
 
-export const getCharacters = (page, params) => ({
+export const getCharacters = (params) => ({
   type: ActionTypes.GET_CHARACTERS,
-  payload: api.GetCharacters(page).then(
+  payload: api.GetCharacters(params).then(
     (response) => ({
       data: response.data,
       total: response.data.info.count,

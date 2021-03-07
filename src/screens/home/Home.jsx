@@ -11,12 +11,11 @@ import Box from "@material-ui/core/Box";
 
 import Connector from "../../dataStore/Connector";
 import CharactersCardList from "../character/CharactersCardList";
-
 import CharacterProfile from "../character/profile/CharacterProfile";
 import DataGetter from "../../dataStore/DataGetter";
 
 const Home = (props) => {
-  const { data, getCharacters } = props;
+  const { data, getCharacters, params } = props;
 
   return (
     <Box p={5}>
@@ -26,19 +25,21 @@ const Home = (props) => {
 
           <Route
             path="/character/:page"
-            render={(routerProps) => (
-              // eslint-disable-next-line react/jsx-props-no-spreading
-              <DataGetter {...props} {...routerProps}>
-                <CharactersCardList
+            render={(routerProps) => {
+              const { match } = routerProps;
+              return (
+                <DataGetter
+                  params={params}
+                  match={match}
                   getCharacters={getCharacters}
-                  data={data}
-                  /* eslint-disable-next-line react/jsx-props-no-spreading */
-                  {...props}
-                  /* eslint-disable-next-line react/jsx-props-no-spreading */
-                  {...routerProps}
-                />
-              </DataGetter>
-            )}
+                >
+                  <CharactersCardList
+                    getCharacters={getCharacters}
+                    data={data}
+                  />
+                </DataGetter>
+              );
+            }}
             exact
           />
 
@@ -61,11 +62,13 @@ const Home = (props) => {
 
 Home.defaultProps = {
   data: [],
+  params: {},
 };
 
 Home.propTypes = {
   getCharacters: PropTypes.func.isRequired,
   data: PropTypes.instanceOf(Object),
+  params: PropTypes.instanceOf(Object),
 };
 
 export default Connector(Home);

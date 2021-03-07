@@ -6,6 +6,10 @@ class DataGetter extends Component {
 
   componentDidUpdate = () => this.getData();
 
+  /*
+   * get parameters from url and compares them with those
+   * in data store that were added after the last request
+   * */
   getData = () => {
     const { params, match, getCharacters } = this.props;
     const dsData = params;
@@ -15,7 +19,7 @@ class DataGetter extends Component {
     };
 
     if (Object.keys(rtData).find((key) => dsData[key] !== rtData[key]))
-      getCharacters(rtData.page, rtData);
+      getCharacters(rtData);
   };
 
   render() {
