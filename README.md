@@ -1,6 +1,7 @@
 ## Table of contents
 
 - [The Rick and Morty](#the-rick-and-morty)
+- [Building](#building)
 - [Available Scripts](#available-scripts)
 - [Deployment](#deployment)
 
