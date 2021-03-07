@@ -31,7 +31,7 @@ class CharacterProfile extends Component {
       .GetSingleCharacter(id)
       .then((response) => this.setState({ data: response.data }))
       .catch((error) =>
-        this.setState({ data: {}, errorMessage: error.response.data.error })
+        this.setState({ errorMessage: error.response.data.error })
       )
       .finally(() => this.setState({ loading: false }));
   }
