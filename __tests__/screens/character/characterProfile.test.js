@@ -69,9 +69,7 @@ describe("<CharacterProfile/>", () => {
       expect(charaMediaCount).toBe(0);
       expect(charaContentCount).toBe(0);
     });
-  });
 
-  describe("render()", () => {
     test("check state", () => {
       const wrapper = shallow(<CharacterProfile id={id} />);
 
@@ -81,9 +79,7 @@ describe("<CharacterProfile/>", () => {
 
       expect(stateData.data).toBe(data);
     });
-  });
 
-  describe("render()", () => {
     test("renders the component loading", () => {
       const wrapper = shallow(<CharacterProfile id={id} />);
 
@@ -93,9 +89,7 @@ describe("<CharacterProfile/>", () => {
 
       expect(skeletonCount).toBe(1);
     });
-  });
 
-  describe("render()", () => {
     test("renders the component with data", () => {
       const wrapper = shallow(<CharacterProfile id={id} />);
 

@@ -64,9 +64,7 @@ describe("<CharacterLocationOriginInfo />", () => {
 
       expect(typographyCount).toBe(2);
     });
-  });
 
-  describe("render()", () => {
     test("check state", () => {
       const wrapper = shallow(
         <CharacterLocationOriginInfo id={id} title={title} name={name} />
@@ -78,9 +76,7 @@ describe("<CharacterLocationOriginInfo />", () => {
 
       expect(stateData.data).toBe(data);
     });
-  });
 
-  describe("render()", () => {
     test("renders the component loading", () => {
       const wrapper = shallow(
         <CharacterLocationOriginInfo id={id} title={title} name={name} />
@@ -92,9 +88,7 @@ describe("<CharacterLocationOriginInfo />", () => {
 
       expect(skeletonCount).toBe(1);
     });
-  });
 
-  describe("render()", () => {
     test("renders the component with data", () => {
       const wrapper = shallow(
         <CharacterLocationOriginInfo id={id} title={title} name={name} />

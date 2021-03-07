@@ -57,9 +57,7 @@ describe("<CharacterLocationOriginInfo />", () => {
       expect(charaContentCount).toBe(1);
       expect(linkCount).toBe(1);
     });
-  });
 
-  describe("render()", () => {
     test("check the route", () => {
       const wrapper = shallow(<CharacterCard data={data} />);
 
